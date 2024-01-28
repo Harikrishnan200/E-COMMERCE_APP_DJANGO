@@ -8,7 +8,7 @@ class Product(models.Model):
     title = models.CharField(max_length = 200)
     price = models.FloatField()
     description = models.TextField()
-    images = models.ImageField(upload_to='/media')
+    images = models.ImageField(upload_to='media/images')
     priority = models.IntegerField() # used to set the priority of that product
     delete_status = models.IntegerField(choices = DELETE_CHOICES,default = LIVE)
     created_at = models.DateField(auto_now = True)
