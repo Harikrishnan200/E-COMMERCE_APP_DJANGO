@@ -14,41 +14,17 @@
 </head>
 
 <body>
-    <div class="container">
-        <div class="navbar">
-            <div class="logo">
-                <a href="index.html"><img src="{%static 'images/logo.png' %}" alt="logo" width="125px"></a>
-            </div>
-            <nav>
-                <ul id="MenuItems">
-                    <li><a href="{% url 'home' %}">Home</a></li>
-                    <li><a href="{% url '' %}">Products</a></li>
-                    <li><a href="">About</a></li>
-                    <li><a href="">Contact</a></li>
-                    <li><a href="account.html">Account</a></li>
-                </ul>
-            </nav>
-            <a href="cart.html"><img src="{%static 'images/cart.png' %}" width="30px" height="30px"></a>
-            <img src="{%static 'images/menu.png' %}" class="menu-icon" onclick="menutoggle()">
-        </div>
-    </div>
-
+    
     <!-- All Products -->
 
     <div class="small-container">
         <div class="row row-2">
             <h2>All Products</h2>
-            <select>
-                <option>Default Sort</option>
-                <option>Sort By Price</option>
-                <option>Sort By Popularity</option>
-                <option>Sort By Rating</option>
-                <option>Sort By Sale</option>
-            </select>
+            
         </div>
         <div class="row">
             <div class="col-4">
-                <a href="product_details.html"><img src="{%static 'images/product-1.jpg' %}"></a>
+                <a href="{% url 'detail_product' %}"><img src="{% static  'images/product-1.jpg' %}"></a>
                 <h4>Red Printed T-Shirt</h4>
                 <div class="rating">
                     <i class="fa fa-star"></i>
@@ -60,7 +36,7 @@
                 <p>$50.00</p>
             </div>
             <div class="col-4">
-                <img src="{%static 'images/product-2.jpg' %}">
+                <img src="{% static  'images/product-2.jpg' %}">
                 <h4>Red Printed T-Shirt</h4>
                 <div class="rating">
                     <i class="fa fa-star"></i>
@@ -72,7 +48,7 @@
                 <p>$50.00</p>
             </div>
             <div class="col-4">
-                <img src="{%static 'images/product-3.jpg' %}">
+                <img src="{% static  'images/product-3.jpg' %}">
                 <h4>Red Printed T-Shirt</h4>
                 <div class="rating">
                     <i class="fa fa-star"></i>
@@ -84,7 +60,7 @@
                 <p>$50.00</p>
             </div>
             <div class="col-4">
-                <img src="{%static 'images/product-4.jpg' %}">
+                <img src="{% static  'images/product-4.jpg' %}">
                 <h4>Red Printed T-Shirt</h4>
                 <div class="rating">
                     <i class="fa fa-star"></i>
@@ -98,7 +74,7 @@
         </div>
         <div class="row">
             <div class="col-4">
-                <img src="{%static 'images/product-5.jpg' %}">
+                <img src="{% static  'images/product-5.jpg' %}">
                 <h4>Red Printed T-Shirt</h4>
                 <div class="rating">
                     <i class="fa fa-star"></i>
@@ -110,7 +86,7 @@
                 <p>$50.00</p>
             </div>
             <div class="col-4">
-                <img src="{%static 'images/product-6.jpg' %}">
+                <img src="{% static  'images/product-6.jpg' %}">
                 <h4>Red Printed T-Shirt</h4>
                 <div class="rating">
                     <i class="fa fa-star"></i>
@@ -122,7 +98,7 @@
                 <p>$50.00</p>
             </div>
             <div class="col-4">
-                <img src="{%static 'images/product-7.jpg' %}">
+                <img src="{% static  'images/product-7.jpg' %}">
                 <h4>Red Printed T-Shirt</h4>
                 <div class="rating">
                     <i class="fa fa-star"></i>
@@ -134,7 +110,7 @@
                 <p>$50.00</p>
             </div>
             <div class="col-4">
-                <img src="{%static 'images/product-8.jpg' %}">
+                <img src="{% static  'images/product-8.jpg' %}">
                 <h4>Red Printed T-Shirt</h4>
                 <div class="rating">
                     <i class="fa fa-star"></i>
@@ -148,7 +124,7 @@
         </div>
         <div class="row">
             <div class="col-4">
-                <img src="{%static 'images/product-9.jpg' %}">
+                <img src="{% static  'images/product-9.jpg' %}">
                 <h4>Red Printed T-Shirt</h4>
                 <div class="rating">
                     <i class="fa fa-star"></i>
@@ -160,7 +136,7 @@
                 <p>$50.00</p>
             </div>
             <div class="col-4">
-                <img src="{%static 'images/product-10.jpg' %}">
+                <img src="{% static  'images/product-10.jpg' %}">
                 <h4>Red Printed T-Shirt</h4>
                 <div class="rating">
                     <i class="fa fa-star"></i>
@@ -172,7 +148,7 @@
                 <p>$50.00</p>
             </div>
             <div class="col-4">
-                <img src="{%static 'images/product-11.jpg' %}">
+                <img src="{% static  'images/product-11.jpg' %}">
                 <h4>Red Printed T-Shirt</h4>
                 <div class="rating">
                     <i class="fa fa-star"></i>
@@ -184,7 +160,7 @@
                 <p>$50.00</p>
             </div>
             <div class="col-4">
-                <img src="{%static 'images/product-12..jpg' %}">
+                <img src="{% static  'images/product-12.jpg' %}">
                 <h4>Red Printed T-Shirt</h4>
                 <div class="rating">
                     <i class="fa fa-star"></i>
@@ -206,45 +182,7 @@
     </div>
 
     <!-- Footer -->
-    <div class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="footer-col-1">
-                    <h3>Download Our App</h3>
-                    <p>Download App for Android and ios mobile phone.</p>
-                    <div class="app-logo">
-                        <img src="{% static 'images/play-store.png' %}">
-                        <img src="{% static 'images/app-store.png' %}">
-                    </div>
-                </div>
-                <div class="footer-col-2">
-                    <img src="{% static 'images/logo-white.png' %}">
-                    <p>Our Purpose Is To Sustainably Make the Pleasure and Benefits of Sports Accessible to the Many.
-                    </p>
-                </div>
-                <div class="footer-col-3">
-                    <h3>Useful Links</h3>
-                    <ul>
-                        <li>Coupons</li>
-                        <li>Blog Post</li>
-                        <li>Return Policy</li>
-                        <li>Join Affiliate</li>
-                    </ul>
-                </div>
-                <div class="footer-col-4">
-                    <h3>Follow Us</h3>
-                    <ul>
-                        <li>Facebook</li>
-                        <li>Twitter</li>
-                        <li>Instagram</li>
-                        <li>Youtube</li>
-                    </ul>
-                </div>
-            </div>
-            <hr>
-            <p class="copyright">Copyright 2020 - Samwit Adhikary</p>
-        </div>
-    </div>
+   
 
     <!-- javascript -->
 
