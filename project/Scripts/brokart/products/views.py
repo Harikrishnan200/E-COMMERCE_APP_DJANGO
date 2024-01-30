@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Product
 from django.core.paginator import Paginator
+import random
 
 # Create your views here.
 def home(request):
@@ -18,6 +19,25 @@ def list_products(request):
     return render(request,'product_details.html',context)
 
 
-def detail_product(request):
-    return render(request,'product_description_layout.html')
+def detail_product(request,pk):
+    list = []
+    product = Product.objects.get(pk=pk)
+    
+    
+   # for related products
+    for i in range(4):
+
+        random_object = Product.objects.order_by('?')[0]
+        
+        list.append(random_object)   
+    
+    context = {'product':product,
+               'related_products':list
+               }
+      
+           
+       
+
+
+    return render(request,'product_description_layout.html',context)
 
