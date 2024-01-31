@@ -24,7 +24,7 @@
     <div class="row">
        {% for i in featured_product %} 
         <div class="col-4">
-            <a href="product_details.html"><img src="{{i.images.url}}"></a>
+            <a href="{% url 'detail_product' i.id %}"><img src="{{i.images.url}}"></a>
             <h4>Red Printed T-Shirt</h4>
             <div class="rating">
                 <i class="fa fa-star"></i>
@@ -41,9 +41,9 @@
     <!-- Latest  Products-->
     <h2 class="title">Latest Products</h2>
     <div class="row">
-        
+     {% for i in latest_product %}
         <div class="col-4">
-            <img src="{% static 'images/product-5.jpg'%}">
+           <a href="{% url 'detail_product' i.id %}"> <img src="{{i.images.url}}"></a>
             <h4>Red Printed T-Shirt</h4>
             <div class="rating">
                 <i class="fa fa-star"></i>
@@ -52,26 +52,10 @@
                 <i class="fa fa-star"></i>
                 <i class="fa fa-star-o"></i>
             </div>
-            <p>$50.00</p>
+            <p>{{i.price}}</p>
         </div>
-       
+       {% endfor %}
     </div>
 
 
-    <div class="row">
-        
-        <div class="col-4">
-            <img src="{% static 'images/product-9.jpg'%}">
-            <h4>Red Printed T-Shirt</h4>
-            <div class="rating">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star-o"></i>
-            </div>
-            <p>$50.00</p>
-        </div>
-        
-    </div>
 </div>
