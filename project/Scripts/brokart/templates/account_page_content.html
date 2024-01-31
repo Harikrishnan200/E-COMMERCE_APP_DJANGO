@@ -30,20 +30,33 @@
                             <span onclick="register()">Register</span>
                             <hr id="Indicator">
                         </div>
-                        <form id="LoginForm">
-                            <input type="text" placeholder="Username">
-                            <input type="password" placeholder="Password">
+                        <form id="LoginForm" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <input type="text" name="username" placeholder="Username">
+                            <input type="password" name="password" placeholder="Password">
                             <button type="submit" class="btn">Login</button>
                             <a href="">Forget Password</a>
                         </form>
 
-                        <form id="RegForm">
-                            <input type="text" placeholder="Username">
-                            <input type="email" placeholder="Email">
-                            <input type="password" placeholder="Password">
-                            <button type="submit" class="btn">Register</button>
+                        <form id="RegForm" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <input type="text" placeholder="Username" name="username" required maxlength="12" minlength="4">
+                            <input type="email" placeholder="Email" name="email" required >
+                            <input type="password" placeholder="Password" name="password" required maxlength="12" minlength="6">
+                            <input type="text" placeholder="Address" name="address" required maxlength="30" minlength="5">
+                            <input type="text" placeholder="Phone" name="phone" required maxlength="10" minlength="10">
+                            <button type="submit" name="register" class="btn">Register</button>
+                            
                         </form>
-                    </div>
+                        
+                    </div> 
+                    <div>
+                        {% if messages %} 
+                          {% for message in messages %}
+                              <li>{{message}}</li>
+                           {% endfor %}
+                        {% endif %}
+                    </div> 
                 </div>
             </div>
         </div>
