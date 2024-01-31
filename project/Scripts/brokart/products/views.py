@@ -25,19 +25,11 @@ def detail_product(request,pk):
     
     
    # for related products
-    for i in range(4):
-
-        random_object = Product.objects.order_by('?')[0]
-        
-        list.append(random_object)   
+    random_objects = Product.objects.order_by('?')[:4]  #this is used to select 4 random objects from Product table
     
     context = {'product':product,
-               'related_products':list
+               'related_products':random_objects
                }
       
-           
-       
-
-
     return render(request,'product_description_layout.html',context)
 
