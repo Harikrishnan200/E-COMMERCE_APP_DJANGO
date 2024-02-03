@@ -34,7 +34,7 @@
                             {% csrf_token %}
                             <input type="text" name="username" placeholder="Username">
                             <input type="password" name="password" placeholder="Password">
-                            <button type="submit" class="btn">Login</button>
+                            <button type="submit" name="login" class="btn">Login</button>
                             <a href="">Forget Password</a>
                         </form>
 
@@ -50,16 +50,18 @@
                         </form>
                         
                     </div> 
+                    {% if messages %}
                     <div class="container">
                     <div class="error_form-container">
-                        {% if messages %} 
+                         
                           {% for message in messages %}
-                          <p style="color:red;margin: auto;">Error!!  {{message}}</p>
+                          <p class="{{message.tags}}">{{message}}</p>
                               
                            {% endfor %}
-                        {% endif %}
+                        
                     </div>
                 </div>
+                {% endif %}
                 </div>
             </div>
         </div>
@@ -103,6 +105,13 @@
         }
     </script>
 
+    {% if register %}
+     <script> register() </script>
+         
+   
+    {% else %}
+      <script>login()</script>
+    {% endif %}
 </body>
 
 </html>
