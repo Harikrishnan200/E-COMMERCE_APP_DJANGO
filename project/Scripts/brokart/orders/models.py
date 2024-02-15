@@ -28,3 +28,5 @@ class OrderedItem(models.Model):
     product = models.ForeignKey(Product,on_delete = models.SET_NULL,related_name='added_carts',null = True)   
     quantity = models.IntegerField(default = 1)
     owner = models.ForeignKey(Order,on_delete = models.CASCADE,related_name = 'added_items')
+
+  

@@ -1,5 +1,6 @@
 {% load static %}
-
+{% load multiply %}
+{% load totalSum %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,12 +35,12 @@
                             <p>{{cart_item.product.title}}</p>
                             <small>${{cart_item.product.price}}</small>
                             <br>
-                            <a href="">Remove</a>
+                            <a href="{% url 'remove_item_from_cart' cart_item.id %}">Remove</a>
                         </div>
                     </div>
                 </td>
                 <td><input type="number" disabled value="{{cart_item.quantity}}"></td>
-                <td>${{cart_item.product.price}}</td>
+                <td>${% multiply cart_item.product.price  cart_item.quantity %}</td>
             </tr>
             {% endfor %}
         </table>
@@ -47,18 +48,15 @@
             <table>
                 <tr>
                     <td>Subtotal</td>
-                    <td>$200.00</td>
+                    <td>${% totalSum cart %}</td>
                 </tr>
+            
                 <tr>
-                    <td>Tax</td>
-                    <td>$35.00</td>
-                </tr>
-                <tr>
-                    <td>Total</td>
-                    <td>$230.00</td>
-                </tr>
-                <tr>
-                    <td colspan="2"></td><td><button class="btn">Place order</button></td>
+                    <td colspan="2"></td><td>
+                        <form method="post" action="{{ url }}"></form>
+                        
+                        
+                        <button class="btn">Place order</button></td>
                 </tr>
             </table>
         </div>
