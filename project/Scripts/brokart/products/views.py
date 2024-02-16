@@ -7,8 +7,10 @@ import random
 def home(request):
     featured_product = Product.objects.order_by('priority')[:4]
     latest_product = Product.objects.order_by('-id')[:4]
+    random_objects = Product.objects.order_by('?')[:3]  #to select any 3 random objects
     context = {'featured_product':featured_product,
-               'latest_product':latest_product
+               'latest_product':latest_product,
+               'rand_obj':random_objects
                }
     return render(request,'home.html',context)
 
@@ -37,4 +39,6 @@ def detail_product(request,pk):
                }
       
     return render(request,'product_description_layout.html',context)
+
+
 
