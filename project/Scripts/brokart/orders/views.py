@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from .models import Order,OrderedItem
 from products.models import Product
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def show_cart(request):
@@ -15,7 +16,7 @@ def show_cart(request):
     return render(request,'cart.html',context)   
 
 
-
+@login_required(login_url='accounts')
 def add_to_cart(request):
     if request.POST:
         user = request.user 
@@ -50,14 +51,15 @@ def checkout_cart(request):
         if request.POST:
             user = request.user 
             customer = user.customer_profile    #customer object is fetched through reverse relationship
-            quantity = int(request.POST.get('quantity'))
-            product_id = request.POST.get('product_id')
+            total = float(request.POST.get('total'))
+            print("total price :",total)
             order_obj = Order.objects.get(  #here create an object of customer table with some conditions specified below
                 owner = customer,
                 order_status = Order.CART_STAGE
             ) 
             if order_obj:
                 order_obj.order_status=Order.ORDER_CONFIRMED
+                order_obj.total_price=total 
                 order_obj.save()       
                 status_message = "Your order is processed."
                 messages.success(request,status_message)
@@ -67,4 +69,13 @@ def checkout_cart(request):
     except Exception as e:
         status_message="Something went wrong" 
         messages.warning(request,str(e))
-    return redirect('cart')    
+    return redirect('cart')  
+
+
+@login_required(login_url='accounts')
+def show_orders(request):
+    user = request.user
+    customer = user.customer_profile
+    all_orders = Order.objects.filter(owner=customer).exclude(order_status=Order.CART_STAGE)
+    context = {'orders':all_orders}
+    return render(request,'orders.html',context)

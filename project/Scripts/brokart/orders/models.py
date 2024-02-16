@@ -18,11 +18,14 @@ class Order(models.Model):  # it is used to indicate cart items
                     ) 
    
     order_status = models.IntegerField(choices = STATUS_CHOICES,default = CART_STAGE )
+    total_price = models.FloatField(default= 0)
     owner = models.ForeignKey(Customer,on_delete = models.SET_NULL,related_name = 'owner',null = True)
     delete_status = models.IntegerField(choices = DELETE_CHOICES,default = LIVE)
     created_at = models.DateField(auto_now = True)
     updated_at = models.DateField(auto_now = True)
-
+    
+    def __str__(self) -> str:
+        return "order-{}-{}".format(self.id, self.owner.user.username) #this is used to display  order-{self.id}-{self.owner.user.username} in this order
 
 class OrderedItem(models.Model):
     product = models.ForeignKey(Product,on_delete = models.SET_NULL,related_name='added_carts',null = True)   

@@ -53,10 +53,12 @@
             
                 <tr>
                     <td colspan="2"></td><td>
-                        <form method="post" action="{{ url }}"></form>
+                        <form method="post" action="{% url 'checkout' %}" e enctype="multipart/form-data">
+                            {% csrf_token %}
+                        <input type="hidden" value="{% totalSum cart %}" name="total"></input>
                         
-                        
-                        <button class="btn">Place order</button></td>
+                        <button class="btn" type="submit">Place order</button></td>
+                    </form>
                 </tr>
             </table>
         </div>
